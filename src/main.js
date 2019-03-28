@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import AccordionItem from './components/AccordionItem.vue'
-import HelloWorld from './components/HelloWorld.vue'
 import MainNav from './components/MainNav.vue'
 
 Vue.config.productionTip = false
@@ -11,7 +10,6 @@ new Vue({
   el: "#app",
   components: {
     AccordionItem,
-    HelloWorld,
     MainNav,
   }
 })
