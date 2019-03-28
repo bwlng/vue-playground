@@ -3,3 +3,13 @@
 @tailwind components;
 
 @tailwind utilities;
+
+input[type="text"],
+textarea {
+    @apply border border-gray-500 p-2 w-full;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    @apply border-purple-500 outline-none;
+}

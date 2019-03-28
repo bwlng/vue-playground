@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>vue.studiosaurus.dev</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but vue.studiosaurus.dev doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <main-nav></main-nav>
+    <div class="py-16">
+      <div id="form-wrapper" class="container border border-gray-300 px-4 py-6 rounded shadow-lg mx-auto">
+        <template v-if="hasErrors">
+          <div class="bg-red-200 border border-red-300 text-red-500 rounded-sm p-2 mb-2">
+            There was an error submitting the form. Please correct and resubmit.
+          </div>
+        </template>
+        <div v-if="isSubmitted" class="bg-green-300 border-green-500 text-green-500">
+          Thanks for your submission, <strong>{{ name }}</strong>. We’ll be in touch soon.
+        </div>
+        <form @submit.prevent="processForm()" v-else="!isSubmitted">
+          <div>
+            <label for="name">
+              Name
+              <input name="name" id="name" type="text" v-model="name">
+            </label>
+            <template v-if="errors.name"><p class="text-red-500">{{ errors.name }}</p></template>
+          </div>
+          <div class="mt-4">
+            <label for="email">
+              Email
+              <input name="email" id="email" type="text" v-model="email">
+            </label>
+            <template v-if="errors.email"><p class="text-red-500">{{ errors.email }}</p></template>
+          </div>
+          <div class="mt-4">
+            <label for="message">
+              Message
+              <textarea name="message" id="message" class="border border-gray-500 p-2 w-full" v-model="message"></textarea>
+            </label>
+            <template v-if="errors.message"><p class="text-red-500">{{ errors.message }}</p></template>
+          </div>
+          <div class="mt-4">
+            <button
+              class="rounded-sm p-2 border uppercase tracking-wide"
+              :class="{ 'bg-gray-400 text-gray-500 border-gray-500': isProcessing, 'bg-purple-500 border-blue-700 text-white': !isProcessing }"
+              :disabled="isProcessing"
+            >
+              Submit
+            </button>
+            <template v-if="isProcessing">
+              <i class="fas fa-spinner fa-spin text-gray-400"></i>
+            </template>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
