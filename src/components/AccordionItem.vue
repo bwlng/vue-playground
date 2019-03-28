@@ -7,11 +7,9 @@
       <slot name="title">Default Title</slot>
       <i class="fas" :class="{ 'fa-plus': true, 'is-open': isOpen }"></i>
     </div>
-    <transition name="show-toggle">
-      <div :class="{ 'pb-4': true }" v-show="isOpen">
-        <slot name="description">Default Description</slot>
-      </div>
-    </transition>
+    <div :class="{ 'pb-4': true }" v-show="isOpen">
+      <slot name="description">Default Description</slot>
+    </div>
   </div>
 </template>
 
