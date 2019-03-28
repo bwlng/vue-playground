@@ -1,24 +1,26 @@
 <template>
   <nav class="masthead flex justify-between">
-    <slot name="logo">Default Logo</slot>
+    <slot name="logo" class="text-white"><a href="/" class="text-white">Vue Demo</a></slot>
     <transition name="fade-toggle">
       <div class="main-nav" v-show="isOpen">
         <button class="absolute m-4 text-blue-500 top-0 right-0" @click.prevent="close()">
           <i class="far fa-times-circle fa-lg"></i>
         </button>
+        <slot name="nav">
         <ul class="list-reset w-64 max-w-full mx-auto text-center">
           <li v-for="(item, index) in items" :key="item.link" class="border-b py lg:border-0">
             <a
               :href="item.link"
               :class="{
                 'text-blue-500 no-underline block py-4': true,
-                'border-b border-blue-500': index + 1 !== items.length ? true : false
+                'border-b border-blue-500': index < (items.length - 1) ? true : false
               }"
             >
               {{ item.label }}
             </a>
           </li>
         </ul>
+        </slot>
       </div>
     </transition>
     <div>
@@ -37,13 +39,17 @@ export default {
       isOpen: false,
       items: [
         {
-          link: "/accordion.html",
-          label: "Accordions"
+          link: "/",
+          label: "Home"
         },
         {
-          link: "/main-nav.html",
-          label: "Main Nav"
+          link: "/form",
+          label: "Form"
         },
+        {
+          link: "/resources",
+          label: "Resources"
+        }
       ]
 
     }
