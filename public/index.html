@@ -4,14 +4,39 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>vue.studiosaurus.dev</title>
+    <script src="http://localhost:8098"></script>
+    <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
-  <body>
+  <body class="font-sans">
     <noscript>
       <strong>We're sorry but vue.studiosaurus.dev doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <main-nav>
+        <div slot="logo" class="text-white">Logo</div>
+      </main-nav>
+      <div class="py-16">
+        <hello-world></hello-world>
+      </div>
+      <div class="container mx-auto">
+        <hr />
+        <accordion-item>
+          <div slot="title">What is Vue</div>
+          <div slot="description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus cum expedita consequuntur id voluptates. Itaque porro, cum velit laboriosam, in id voluptatem. Animi repellendus, non molestiae debitis, voluptatem obcaecati dolores.</p>
+          </div>
+        </accordion-item>
+        <accordion-item>
+          <div slot="title">What is <em>is</em></div>
+          <div slot="description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus cum expedita consequuntur id voluptates. Itaque porro, cum velit laboriosam, in id voluptatem. Animi repellendus, non molestiae debitis, voluptatem obcaecati dolores.</p>
+          </div>
+        </accordion-item>
+      </div>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>

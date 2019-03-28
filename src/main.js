@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import AccordionItem from './components/AccordionItem.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import MainNav from './components/MainNav.vue'
 
@@ -9,7 +10,8 @@ import "./styles.css";
 new Vue({
   el: "#app",
   components: {
+    AccordionItem,
     HelloWorld,
-    MainNav
+    MainNav,
   }
 })
