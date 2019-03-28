@@ -1,8 +1,15 @@
 import Vue from 'vue'
-import App from './App.vue'
+import HelloWorld from './components/HelloWorld.vue'
+import MainNav from './components/MainNav.vue'
 
 Vue.config.productionTip = false
 
+import "./styles.css";
+
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el: "#app",
+  components: {
+    HelloWorld,
+    MainNav
+  }
+})
