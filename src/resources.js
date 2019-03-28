@@ -10,10 +10,12 @@ Vue.config.productionTip = false
 import "./styles.css";
 
 new Vue({
-  el: "#app",
+  el: "#resources",
   data: {
     users: [],
-    posts: []
+    posts: [],
+    isProcessingUsers: false,
+    isProcessingPosts: false
   },
   components: {
     ResourcesCriteria,
@@ -34,6 +36,8 @@ new Vue({
   },
   methods: {
     getPosts() {
+        this.isProcessingPosts = true
+
         axios({
             url: `https://jsonplaceholder.typicode.com/posts?${qs.stringify({ userId: this.selectedUsersIds }, {arrayFormat: 'brackets'})}`,
             method: 'get',
@@ -41,11 +45,13 @@ new Vue({
             if (result.status == 200) {
                 this.posts = result.data
             }
+            this.isProcessingPosts = false
         }).catch((error) => {
             console.log(error)
         })
     },
     getUsers() {
+        this.isProcessingUsers = true
         axios({
             url: 'https://jsonplaceholder.typicode.com/users',
             method: 'get',
@@ -54,6 +60,7 @@ new Vue({
                 result.data.forEach(user => { user.isSelected = false })
                 this.users = result.data
             }
+            this.isProcessingUsers = false
         }).catch((error) => {
             console.log(error)
         })
@@ -67,6 +74,15 @@ new Vue({
         this.users.forEach(user => {
             if (user.id == updatedUser.id) {
                 user.isSelected = $event.currentTarget.checked
+            }
+        })
+        this.getPosts()
+    })
+
+    this.$root.$on('removeCriteria', (userToRemove) => {
+        this.users.forEach(user => {
+            if (user.id == userToRemove.id) {
+                user.isSelected = false
             }
         })
         this.getPosts()
