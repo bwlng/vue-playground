@@ -15,8 +15,15 @@ module.exports = {
     // template is inferred to be `public/form.html`
     // and falls back to `public/index.html` if not found.
     // Output filename is inferred to be `form.html`.
-    form: 'src/form.js',
-    resources: 'src/resources.js'
+    form: {
+        entry: 'src/form.js',
+
+        chunks: ['index', 'form'],
+    },
+    resources: {
+        entry: 'src/resources.js',
+        chunks: ['index', 'resources'],
+    }
   },
 
   publicPath: "/",
