@@ -1,6 +1,9 @@
 <template>
   <div class="border-b">
-    <div class="flex justify-between items-center py-2 uppercase font-medium tracking-wide cursor-pointer" @click="toggle()">
+    <div
+      class="flex justify-between items-center py-2 uppercase font-medium tracking-wide cursor-pointer"
+      @click="toggle()"
+    >
       <slot name="title">Default Title</slot>
       <i class="fas" :class="{ 'fa-plus': true, 'is-open': isOpen }"></i>
     </div>
@@ -36,14 +39,4 @@ export default {
   .fas.is-open {
     transform: rotate(45deg);
   }
-
-/*
-  .show-toggle-enter-active, .show-toggle-leave-active {
-    transition: .5s;
-    transition-property: opacity, max-height;
-  }
-  .show-toggle-enter, .show-toggle-leave-to {
-    opacity: 0;
-  }
-*/
 </style>
