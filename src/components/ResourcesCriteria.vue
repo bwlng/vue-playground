@@ -3,7 +3,7 @@
     <div class="flex flex-wrap">
       <template v-for="(user, index) in users">
         <div class="bg-gray-500 p-1 rounded-sm mb-2 mr-2" v-if="user.isSelected">
-          {{ user.name }}
+          {{ `User #${user.id}` }} <button @click.prevent="remove(user)"><i class="fas fa-times text-sm"></i></button>
         </div>
       </template>
     </div>
@@ -14,6 +14,11 @@
 export default {
   name: 'ResourcesCriteria',
   props: ['users'],
+  methods: {
+    remove(user) {
+      this.$root.$emit('removeCriteria', user)
+    }
+  }
 }
 </script>
 
